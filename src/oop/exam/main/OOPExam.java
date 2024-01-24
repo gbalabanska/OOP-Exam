@@ -17,7 +17,7 @@ public class OOPExam
   {
     Tree[] treeArray = createTreeArray();
 
-    sortReversedTreeArray(treeArray);
+    Arrays.sort(treeArray, (t1, t2) -> t2.getName().compareTo(t1.getName()));
 
     for (Tree tree : treeArray)
     {
@@ -32,23 +32,17 @@ public class OOPExam
     System.out.print("Enter the size of the tree array: ");
     int arraySize = scanner.nextInt();
 
-    System.out.println("Possible types of trees are: F - Fruit, D - Decorative");
+    System.out.println("F - Fruit tree, D - Decorative tree");
     Tree[] treeArray = new Tree[arraySize];
 
     for (int i = 0; i < arraySize; i++)
     {
-      System.out.println("Creating tree #" + (i + 1));
+      System.out.println("--- Creating tree no: " + (i + 1));
       treeArray[i] = TreeFactory.createTree();
     }
 
     scanner.close();
     return treeArray;
-  }
-
-  public static void sortReversedTreeArray(Tree[] treeArray)
-  {
-    Comparator<Tree> nameComparator = Comparator.comparing(Tree::getName);
-    Arrays.sort(treeArray, nameComparator.reversed());
   }
 
 }

@@ -9,11 +9,27 @@ public class DecorativeTree extends Tree
   private double maxHeight;
   private double minDistanceBetweenTrees;
 
-   public DecorativeTree(String name, double price, double maxHeight, double minDistanceBetweenTrees)
+  public DecorativeTree()
+  {
+    super();
+  }
+
+  public DecorativeTree(String name, double price, double maxHeight, double minDistanceBetweenTrees)
   {
     super(name, price);
     this.maxHeight = maxHeight;
     this.minDistanceBetweenTrees = minDistanceBetweenTrees;
+  }
+
+  public DecorativeTree(DecorativeTree dt)
+  {
+    if (dt != null)
+    {
+      setName(dt.getName());
+      setPrice(dt.getPrice());
+      setMaxHeight(dt.getMaxHeight());
+      setMinDistanceBetweenTrees(dt.getMinDistanceBetweenTrees());
+    }
   }
 
   public double getMaxHeight()
@@ -23,7 +39,10 @@ public class DecorativeTree extends Tree
 
   public void setMaxHeight(double maxHeight)
   {
-    this.maxHeight = maxHeight;
+    if (maxHeight > 0)
+    {
+      this.maxHeight = maxHeight;
+    }
   }
 
   public double getMinDistanceBetweenTrees()
@@ -33,16 +52,17 @@ public class DecorativeTree extends Tree
 
   public void setMinDistanceBetweenTrees(double minDistanceBetweenTrees)
   {
-    this.minDistanceBetweenTrees = minDistanceBetweenTrees;
-  }
-  
-      @Override
-    public String toString() {
-        return "DecorativeTree{" +
-                "name='" + getName() + '\'' +
-                ", price=" + getPrice() +
-                ", maxHeight=" + maxHeight +
-                ", minDistanceBetweenTrees=" + minDistanceBetweenTrees +
-                '}';
+    if (minDistanceBetweenTrees > 0)
+    {
+      this.minDistanceBetweenTrees = minDistanceBetweenTrees;
     }
+  }
+
+  @Override
+  public String toString()
+  {
+    return String.format(
+        "Decorative tree with name: %s, price: %.2f, max height: %.2f, min distance between trees: %.2f",
+        getName(), getPrice(), maxHeight, minDistanceBetweenTrees);
+  }
 }
