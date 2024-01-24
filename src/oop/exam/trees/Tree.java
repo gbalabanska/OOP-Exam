@@ -19,7 +19,7 @@ public abstract class Tree
     this.price = price;
   }
 
-  public Tree(Tree t)
+  protected Tree(Tree t)
   {
     if (t != null)
     {
