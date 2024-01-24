@@ -4,19 +4,28 @@ package oop.exam.trees;
  *
  * @author gabriela.balabanska
  */
-public class Tree
+public abstract class Tree
 {
-  private String name;
-  private double price;
+  protected String name;
+  protected double price;
 
-  public Tree()
+  protected Tree()
   {
   }
 
-  public Tree(String name, double price)
+  protected Tree(String name, double price)
   {
     this.name = name;
     this.price = price;
+  }
+
+  public Tree(Tree t)
+  {
+    if (t != null)
+    {
+      setName(t.getName());
+      setPrice(t.getPrice());
+    }
   }
 
   public String getName()
